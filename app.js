@@ -55,7 +55,7 @@ app.get('/', function(req, res){
 app.get('/stream/:song', function(req, res) {
   var songPath = socketServer.musicLibrary.songs[req.params.song]
 
-  path.exists(songPath, function (exists) {
+  fs.exists(songPath, function (exists) {
     if(!exists) {
       var msg = 'File `' + songPath + '` not found'
       console.log('\nSTREAMY:', msg)
@@ -80,7 +80,7 @@ app.get('/stream/:song', function(req, res) {
   })
 })
 
-var PORT = 3000
+var PORT = 4000
 
 app.listen(PORT)
 console.log("STREAMY: listening on port", PORT)
